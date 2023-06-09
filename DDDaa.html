@@ -1,0 +1,1092 @@
+
+  <link rel="stylesheet" href="olo.css" type="text/css">
+
+
+<style>
+	textarea {
+	  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+	}
+</style>
+
+<div class="w3-bar w3-red">
+	<h2 class="w3-left"8>Sequence Logo Visualization</h2>
+	
+</div>
+<input type="file" id="input" />
+
+
+<button id="make">SVG</button>
+<button id="make1">JPG</button>
+<button id="make2">PNG</button>
+
+<div class="slidecontainer">
+  
+
+  
+
+  
+	<div class="w3-container w3-cell">
+	  <p>Width</p>
+	</div>
+
+	<div class="w3-container w3-cell">
+	  <p><input type="range" min="600" max="2000" value="1000" class="slider" id="canvas_w"></p>
+	</div>
+	  
+	<div class="w3-container w3-cell">
+	  <p><div class="slidecontainer" id="info_canvas_w">1000 px</div></p>
+	</div>
+
+<div class="w3-container w3-cell">
+	  <p><div id="h">Height</div></p>
+	</div>
+
+	<div class="w3-container w3-cell">
+	  <p><input type="range" min="100" max="1000" value="300" class="slider" id="canvas_h"></p>
+	</div>
+	  
+	<div class="w3-container w3-cell">
+	  <p><div class="slidecontainer" id="info_canvas_h">300 px</div></p>
+	</div>
+  
+</div>
+
+<a href="" download="kkp.svg" id="save_href">
+<img src="" id="save_img"  >
+</a>
+<a href="" download="kkp.jpg" id="save_href1">
+<img src="" id="save_img1" >
+</a>
+
+
+
+<div class="slidecontainer">
+	<div class="w3-container w3-cell">
+		<canvas id="bio" width="1000" height="300" class="w3-animate-zoom"></canvas>
+	</div>
+</div>
+
+<canvas id="letter" width="370" height="410" style="display: none;"></canvas>
+
+<a href="" download="kkp.png" id="save_href2">
+<img src="" id="save_img2" >
+</a>
+
+<div class="slidecontainer">
+
+	<div class="w3-container w3-cell">
+		
+		<textarea rows="7" cols="20" id="mset"></textarea>
+	</div>
+
+</div>
+
+	
+
+<hr>
+
+<div class="slidecontainer">
+
+	<div class="w3-container w3-cell">
+	  <p><div id="ss">Start position</div></p>
+	</div>
+
+	<div class="w3-container w3-cell">
+	  <p><input type="range" min="-20" max="20" value="0" class="slider w3-animate-zoom" id="start_from"></p>
+	</div>
+	  
+	<div class="w3-container w3-cell">
+	  <p><div class="slidecontainer" id="info_sq">1</div></p>
+	</div>
+
+</div>
+
+<div class="slidecontainer">
+
+	<div class="w3-container w3-cell ">
+	  <p><div id="at">Axis thickness</div></p>
+	</div>
+
+	<div class="w3-container w3-cell ">
+	  <p><input type="range" min="1" max="8" value="3"  class="slider w3-animate-zoom" id="lines_ax"></p>
+	</div>
+	  
+	<div class="w3-container w3-cell">
+	  <p><div class="slidecontainer" id="info_ax">3 pixels</div></p>
+	</div>
+
+</div>
+
+<div class="slidecontainer">
+
+	<div class="w3-container w3-cell">
+	  <p><div id="bfs">Bottom font size</div></p>
+	</div>
+
+	<div class="w3-container w3-cell">
+	  <p><input type="range" min="15" max="28" value="28" class="slider w3-animate-zoom" id="font_bo"></p>
+	</div>
+	  
+	<div class="w3-container w3-cell">
+	  <p><div class="slidecontainer" id="info_bo">28 pixels</div></p>
+	</div>
+
+</div>
+
+
+<div class="slidecontainer">
+
+	<div class="w3-container w3-cell">
+	  <p><div id="ls">Letter size</div></p>
+	</div>
+
+	<div class="w3-container w3-cell">
+	  <p><input type="range" min="500" max="550" value="530" class="slider w3-animate-zoom" id="letter_lo"></p>
+	</div>
+	  
+	<div class="w3-container w3-cell">
+	  <p><div class="slidecontainer" id="info_lo">540 pixels</div></p>
+	</div>
+
+</div>
+
+<hr>
+
+<div class="slidecontainer">
+
+	<div class="w3-container w3-cell">
+	  <p>
+	  <input class="w3-check" type="checkbox" id="show_bottom" checked>
+	  <label id="sb">Show baseline</label>
+	  </p>
+	</div>
+
+	<div class="w3-container w3-cell">
+	  <p>
+	  <input class="w3-check" type="checkbox" id="show_bottom_divisions" checked>
+	  <label id='sbd'>Show baseline divisions</label>
+	  </p>
+	</div>
+
+<label id='cc' style="color:blue;position:absolute;left:750;top:120;" >Set Color:</label>
+<input type="text" id="stc" size="5" maxlength="3" 
+       style="background-color:yellow;position:absolute;left:832;top:115;" value="W" />
+<label id='sec' style="color:lightblue;background-color:black;position:absolute;left:894;top:120;" > color: </label>
+<input type="text" id="r1" size="5" maxlength="3" 
+       style="background-color:pink;position:absolute;left:940;top:120;" value="0" />
+<input type="text" id="g1" size="5" maxlength="3"
+       style="background-color:lime;position:absolute;left:990;top:120;"  value="0" />
+<input type="text" id="b1" size="5" maxlength="3" 
+       style="background-color:royalblue;position:absolute;left:1040;top:120" value="255" />
+<button id="mcc" style="position:absolute;left:1100;top:120"> Do </button>
+<!--
+<textarea rows="13" cols="64" id="pmset" style="position:absolute;left:10;top:485"></textarea>
+ -->
+<label id='sec1' style="color:blue;position:absolute;left:450;top:460;" >SEQUENCE POSITION</label>
+
+</div>
+
+
+
+<div id="see"></div>
+<script>
+
+const vs=-50;
+
+const b1 = document.getElementById('canvas_h');
+b1.style.position = 'absolute';
+b1.style.top = '90px';
+b1.style.left = '150px';
+
+
+
+//console.log(rrr+ggg+bbb);
+
+
+var butsave = document.getElementById("mcc");
+butsave.onclick=function(){
+
+
+const b1111 = document.getElementById('r1');
+var kkkk =b1111.value;
+var ks = Number(kkkk);
+//console.log(ks.toString(16));
+var rrr = ks.toString(16);
+ if(ks<10){ rrr ='0'+rrr; }
+const b1112 = document.getElementById('g1');
+ kkkk =b1112.value;
+ ks = Number(kkkk);
+//console.log(ks.toString(16));
+var ggg = ks.toString(16);
+ if(ks<10){ ggg ='0'+ggg; }
+const b1113 = document.getElementById('b1');
+ kkkk =b1113.value;
+ ks = Number(kkkk);
+//console.log(ks.toString(16));
+var bbb = ks.toString(16);
+ if(ks<10){ bbb ='0'+bbb; }
+
+
+const b100 = document.getElementById('sec');
+b100.style.backgroundColor = '#'+rrr+ggg+bbb;
+b100.style.color ='#ff0000';
+
+
+}
+
+//const b1009 = document.getElementById('stc');
+//b1009.style.backgroundColor = '#'+rrr+ggg+bbb;
+//b1009.style.color ='#ff0000';
+
+// const  b124 =document.getElementById("bio")
+//      b124.style.position = 'absolute';
+//      b124.style.top = '152px';
+ //     b124.style.left = '8px'; 
+
+
+const b2 = document.getElementById("info_canvas_h");
+b2.style.position = 'absolute';
+b2.style.top = '110px';
+b2.style.left = '150px';
+const b3 = document.getElementById("info_canvas_w");
+b3.style.position = 'absolute';
+b3.style.top = '110px';
+b3.style.left = '10px';
+const b4 = document.getElementById("h");
+b4.style.position = 'absolute';
+b4.style.top = '60px';
+b4.style.left = '150px';    
+const b5 = document.getElementById("mset");
+b5.style.position = 'absolute';
+b5.style.top = '5px';
+b5.style.left = '320px';      
+
+const b6 = document.getElementById("ss");
+b6.style.position = 'absolute';
+b6.style.top = '55px';
+b6.style.left = '510px'; 
+const b7 = document.getElementById("start_from");
+b7.style.position = 'absolute';
+b7.style.top = '80px';
+b7.style.left = '500px'; 
+const b8 = document.getElementById("info_sq");
+b8.style.position = 'absolute';
+b8.style.top = '100px';
+b8.style.left = '550px'; 
+
+const b9 = document.getElementById("at");
+b9.style.position = 'absolute';
+b9.style.top = '55px';
+b9.style.left = '645px'; 
+const b10 = document.getElementById("lines_ax");
+b10.style.position = 'absolute';
+b10.style.top = '80px';
+b10.style.left = '640px'; 
+const b11 = document.getElementById("info_ax");
+b11.style.position = 'absolute';
+b11.style.top = '100px';
+b11.style.left = '660px'; 
+
+const b12 = document.getElementById("bfs");
+b12.style.position = 'absolute';
+b12.style.top = '55px';
+b12.style.left = '785px'; 
+const b13 = document.getElementById("font_bo");
+b13.style.position = 'absolute';
+b13.style.top = '80px';
+b13.style.left = '780px'; 
+const b14 = document.getElementById("info_bo");
+b14.style.position = 'absolute';
+b14.style.top = '100px';
+b14.style.left = '800px';   
+
+const b15 = document.getElementById("ls");
+b15.style.position = 'absolute';
+b15.style.top = '55px';
+b15.style.left = '940px'; 
+const b16 = document.getElementById("letter_lo");
+b16.style.position = 'absolute';
+b16.style.top = '80px';
+b16.style.left = '920px'; 
+const b17 = document.getElementById("info_lo");
+b17.style.position = 'absolute';
+b17.style.top = '100px';
+b17.style.left = '940px';  
+
+           
+
+const b18 = document.getElementById("show_bottom");
+b18.style.position = 'absolute';
+b18.style.top = '15px';
+b18.style.left = '700px'; 
+const b19 = document.getElementById("sb");
+b19.style.position = 'absolute';
+b19.style.top = '15px';
+b19.style.left = '730px'; 
+
+
+const b20 = document.getElementById("show_bottom_divisions");
+b20.style.position = 'absolute';
+b20.style.top = '15px';
+b20.style.left = '900px'; 
+const b21 = document.getElementById("sbd");
+b21.style.position = 'absolute';
+b21.style.top = '15px';
+b21.style.left = '930px'; 
+
+  //choose file
+      const    b22 =document.getElementById("input")
+      b22.style.position = 'absolute';
+      b22.style.top = '115px';
+      b22.style.left = '500px'; 
+
+   const    b23 =document.getElementById("make")
+      b23.style.position = 'absolute';
+      b23.style.top = '30px';
+      b23.style.left = '500px'; 
+
+       const    b25 =document.getElementById("make1")
+      b25.style.position = 'absolute';
+      b25.style.top = '30px';
+      b25.style.left = '560px'; 
+
+   const    b26 =document.getElementById("make2")
+      b26.style.position = 'absolute';
+      b26.style.top = '30px';
+      b26.style.left = '617px'; 
+
+       const  b24 =document.getElementById("save_img")
+      b24.style.position = 'absolute';
+      b24.style.top = '152px';
+      b24.style.left = '8px'; 
+           const  b27 =document.getElementById("save_img1")
+      b27.style.position = 'absolute';
+      b27.style.top = '152px';
+      b27.style.left = '8px'; 
+     const  b28 =document.getElementById("save_img2")
+      b28.style.position = 'absolute';
+      b28.style.top = '152px';
+      b28.style.left = '8px'; 
+
+
+	//Input text
+	document.getElementById("mset").oninput = function() {
+		c = document.getElementById("mset").value;
+		c = c.replace(/\n/g, ',').replace(/ /g, '').replace(/&emsp;/g, '').replace(/\t/g, '').replace(/	/g, '');;
+		
+		c = c.replace(/,,/g, ',');
+		if(c.charAt(0)==','){c = c.substring(1, c.length);}
+		
+		//document.getElementById("see").innerHTML = c;
+		
+		var tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                 logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+	}
+
+
+          document.getElementById("stc").oninput = function() {
+           tmp = matrix(c);
+           //logo(tmp[0],tmp[1]);
+           logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+           //console.log("aa");
+
+          }
+
+	//Canvas Height
+	document.getElementById("canvas_h").oninput = function() {
+		document.getElementById('bio').height = this.value;
+		document.getElementById("info_canvas_h").innerHTML = this.value + " px";
+
+		tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+	}
+	
+	//Canvas Width
+	document.getElementById("canvas_w").oninput = function() {
+		document.getElementById('bio').width = this.value;
+		document.getElementById("info_canvas_w").innerHTML = this.value + " px";
+		
+		tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+	}
+
+	//Start from position
+	document.getElementById("start_from").oninput = function() {
+		document.getElementById("info_sq").innerHTML = Number(this.value) + 1;
+		sq = this.value;
+		tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+	}
+
+	//Axis thickness:
+	document.getElementById("lines_ax").oninput = function() {
+		document.getElementById("info_ax").innerHTML = Number(this.value) + ' pixels';
+		li = this.value;
+		tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+	}
+	
+	//Bottom font size:
+	document.getElementById("font_bo").oninput = function() {
+		document.getElementById("info_bo").innerHTML = Number(this.value) + ' pixels';
+		bo = this.value;
+		tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+	}
+
+	//letter size:
+	document.getElementById("letter_lo").oninput = function() {
+		document.getElementById("info_lo").innerHTML = Number(this.value) + ' pixels';
+		lo = this.value;
+		tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+	}
+	
+	//Show bottom
+	document.getElementById("show_bottom").oninput = function() {
+		tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+	}
+
+	//Show bottom divisions
+	document.getElementById("show_bottom_divisions").oninput = function() {
+		tmp = matrix(c);
+		//logo(tmp[0],tmp[1]);
+                logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+       
+	}
+
+var sq = 0;      // position
+var li = 3;	 // axis line
+var bo = 28;     // bottom font size
+var lo = 540;    // letter size
+
+
+
+var c =          'GDLGAGKTT,' +
+                 'GDLGAGKTT,' +
+		 'GPLGAGKTS,'+
+                 'GDLGAGKTS,'+
+                 'GDLGAGKTT,'+
+                 'GDLGAGKTT,'+
+                 'GEVGSGKTT,'+ 
+                 'GELGAGKTT,'+ 
+                 'GDLGAGKTT,'+ 
+                 'GNLGAGKTT,'+
+                 'GELGAGKTT,'+ 
+                 'GTLGAGKTT,'+
+                 'GDLGAGKTT,'+
+                 'GDLGAGKTT,'+ 
+                 'GDLGAGKTT,'+
+                 'GDLGAGKTT,'+ 
+                 'GDLGAGKTT';
+
+var selectedFile = document.getElementById("input").files[0];
+  var c5=[];
+
+document.getElementById('input').onchange =
+ function(){
+  var file = this.files[0];
+  var reader = new FileReader();
+  //var c5=[]
+  reader.onload = function(progressEvent){
+    //console.log(this.result);
+   var c5=this.result;
+document.getElementById("mset").textContent = c5;//.replace(/,/g, '\n');
+  //console.log(c5);
+  
+   c = document.getElementById("mset").value;
+c = c.replace(/\n/g, ',').replace(/ /g, '').replace(/&emsp;/g, '').replace(/\t/g, '').replace(/	/g, '');;
+		
+	c = c.replace(/,,/g, ',');
+	if(c.charAt(0)==','){c = c.substring(1, c.length);}
+		
+		//document.getElementById("see").innerHTML = c;
+		
+	var tmp = matrix(c);
+	//logo(tmp[0],tmp[1]);   
+  
+        logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+
+
+
+
+
+
+  };
+  reader.readAsText(file);
+
+
+};
+
+
+var butsave = document.getElementById("make");
+butsave.onclick=function(){
+
+var saveHref = document.getElementById("save_href");
+var img = document.getElementById("save_img");
+var canvas = document.getElementById("bio");
+var tempSrc = canvas.toDataURL("image/svg");
+saveHref.href = tempSrc;
+img.src = tempSrc;
+canvas.width = canvas.width;
+//document.execCommand('Refresh')
+//location.reload();
+}
+
+var butsave = document.getElementById("make1");
+butsave.onclick=function(){
+
+var saveHref1 = document.getElementById("save_href1");
+var img1 = document.getElementById("save_img1");
+var canvas = document.getElementById("bio");
+var tempSrc = canvas.toDataURL("image/jpg");
+saveHref1.href = tempSrc;
+img1.src = tempSrc;
+canvas.width = canvas.width;
+//document.execCommand('Refresh')
+//location.reload();
+}
+
+
+var butsave = document.getElementById("make2");
+butsave.onclick=function(){
+
+var saveHref2 = document.getElementById("save_href2");
+var img2 = document.getElementById("save_img2");
+var canvas = document.getElementById("bio");
+var tempSrc = canvas.toDataURL("image/png");
+saveHref2.href = tempSrc;
+img2.src = tempSrc;
+canvas.width = canvas.width;
+//document.execCommand('Refresh')
+//location.reload();
+}
+
+
+
+document.getElementById("mset").innerHTML = c.replace(/,/g, '\n');
+//c=c5;
+var tmp;
+
+tmp = matrix(c);
+//logo(tmp[0],tmp[1]); //<-------------------------------
+//logokk(tmp[0],tmp[1]);
+
+var pptt;
+
+pptt =logo1(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]); // AA ,NW
+//logokk1(tmp[0],tmp[1],pptt[0],pptt[1]);
+
+//console.log(tmp[1]); // max=1
+//console.log(tmp[0]); //<----------------------- 嚙質滌嚙踝蕭嚙� letter 嚙質滌嚙踝蕭嚙� probility
+
+function matrix(c){
+
+	var s = [];
+	var m = [];
+
+	m = c.split(',');
+//m=c5;
+        //console.log(c);
+        //console.log(m);
+	var n = m.length;
+        //console.log(n); // numSeq
+	//THE ALIGNMENT MATRIX
+	for(var i=0; i<n; i++){
+		s[i] = [];
+		s[i]=m[i].split('');
+	}
+
+	//DETECT ALL LETTERS USING ARRAYS
+	var a = [];
+
+	var t = c.replace(/,/g, '').split('');
+	var k = t.length;
+        //console.log(t);
+	for(var i=0; i<=k; i++){
+		var q = 1;
+		for(var j=0; j<=a.length; j++){
+			if (t[i] === a[j]) {q = 0;}
+		}
+		if (q === 1) {a.push(t[i]);}
+	}
+         //  console.log(a);////<----------- Letter 
+//
+//    "G",
+//    "D",
+//    "L",
+//    "A",
+//    "K",
+//    "T",
+//    "P",
+//    "S",
+//    "E",
+//    "V",
+//    "N"
+
+	// PROFILE MATRIX INITIALIZATION
+	var p = [];
+
+	for(var h=0; h<a.length; h++){
+		p[h]=[];
+		for(var i=0; i<=s[0].length; i++) {
+			p[h][i]=0;
+			p[h][0]=a[h];
+		}
+	}
+        //console.log(a);
+	// THE POSITION FREQUENCY MATRIX
+	for(var i=0; i<s.length; i++) {
+
+		for(var j=0; j<s[i].length; j++){
+					
+			for(var h=0; h<a.length; h++){
+			
+				if (s[i][j] === a[h]) {p[h][j+1]++;}
+			}
+		}
+	}
+         
+
+	// THE POSITION PROBABILITY MATRIX
+	var max = 0; var pp = []; var rr=[]; var f1=[]; var ccc=0;
+	for(var i=0; i<p.length; i++) {
+		for(var j=0; j<p[i].length-1; j++){
+		        //pp[i][j+1] = [];
+			p[i][j+1]=p[i][j+1]/s.length;
+			p[i][j+1]=p[i][j+1].toFixed(2);
+			//pp[i][j+1] = [];
+                        //pp[i][j+1] = p[i][j+1];
+                        pp.push((p[i][j+1]));
+                        rr.push(Number(pp[i][j+1])); 
+                        //pp=p; 
+                        //pp[i][j+1]=p[i][j+1]/s.length;
+			//pp[i][j+1]=p[i][j+1].toFixed(2);
+                        rr = pp.map( str=>{ return Number(str) });
+                        f1 = pp.map( str=>{ return Number(str) }) ;           
+                         
+                        if( (pp[i][j+1]) == 0.0 ) { pp[i][j+1]=1.0;   }
+                       
+			if(max<=p[i][j+1]){max=p[i][j+1];}
+                        			
+
+			p[i][j+1]+='|'+p[i][0];
+                        //console.table([i,j+1, p[i][j+1]]);
+                        
+		}
+         
+	}
+
+         
+         for( i=0; i<pp.length; i++) {
+            if( (rr[i])==0 ) { rr[i] = 1.0;}
+         }
+           const rr2 = [] ;
+          while(rr.length) rr2.push(rr.splice(0,9));
+       
+
+          const F1 = [] ;
+          while(f1.length) F1.push(f1.splice(0,9));
+
+         
+
+         //console.log(rr2[0].length); //Math.log2 //(rr2[1][1]= 0.65)
+                                     //rr2.length= 11   rr2[0].length = 9
+          var s_after =[];
+         for(i=0; i<rr2.length ;i++){
+              for(j=0;j<rr2[0].length;j++)
+             {
+                s_after.push(Math.log2(rr2[i][j])*rr2[i][j]);
+
+             }
+         }
+          var ns_after =[];
+          while(s_after.length) ns_after.push(s_after.splice(0,9));
+
+          //console.log(ns_after);
+
+          var ssu=0;var sslog=[];
+          for(i=0; i<rr2[0].length ;i++){
+              for(j=0;j<rr2.length;j++)
+             {
+                ssu += ns_after[j][i]; 
+                if( j== rr2.length-1 ){
+                     sslog.push(-ssu); ssu=0;
+                    }
+
+             }
+          } 
+        //console.log(Number(pp[10])-2);
+        // console.log(sslog);
+         const nSymbols=20; 
+        
+        const S_befroe = Math.log2(nSymbols); 
+        var e_corr = S_befroe - (nSymbols -1)/(2* Math.log(2) * n);  //numSeq
+        var R =[]; 
+        for(i=0; i<rr2[0].length ;i++){
+         R.push( e_corr*2 -sslog[i] ); //////////////////////////////////////// 
+         }
+       //console.log(R)
+       //console.log(F1)
+      
+       var W=[];
+         for(i=0; i<rr2[0].length ;i++){
+              for(j=0;j<rr2.length;j++)
+             {
+                 
+                
+                 W.push(F1[j][i]*R[i]);
+                    
+
+             }
+          } 
+
+        var nW =[];
+          while(W.length) nW.push(W.splice(0,11));
+
+         
+        //console.log(nW);//<---------------------- bits matrix
+        //var kkkk = [];
+        //kkkk=pp.split(',');
+	//console.log( kkkk);  // p[0][0] = 'G' p[1][0]='D'  
+                                //pp[0][1]='1.00|G'
+        //console.log((pp));
+        //document.getElementById("pmset").textContent = nW;
+        //console.log(p);
+	return [p, max , a, nW,nW];
+}
+
+
+
+function logo1(M, max ,AA,NW,NWO) {  
+   //console.log(AA);
+   //AA = iSort(AA);
+   //console.log(NW);
+   //var NW1 = iSorti(NW);
+   //console.log(NW1);
+   var n = NW[0].length;
+   var n1 = NW.length;
+   var cc = 0; var oo= [];
+    
+   var oi=[]; var ooo =[];
+  
+   //oNW.push(NW);
+   const oNW = NW;
+  // console.log(NWO);
+   //oo = oNW;
+   //console.log(NWO[0][0]);
+
+    	var a = [];
+	var t = M[0].length;
+
+    var canvas = document.getElementById('bio');
+	var canvasl = document.getElementById('letter');
+	var ctl = canvasl.getContext('2d');
+	
+   var w = canvas.width - 80
+   var h = canvas.height - 40;
+	
+   var wl = canvasl.width;
+    var hl = canvasl.height;
+
+max = 7;///////////////////////////////////////////////
+
+if (canvas.getContext) {
+
+		var ctx = canvas.getContext('2d');
+		ctx.clearRect(0, 0, w+80, h+40);
+
+
+
+
+   for(var j=0; j<n1 ; j++){  ///////////////// 9
+   cc=0;
+   var iw = (w/(t-1))-1;
+   var x = 180+(j-1)*iw;
+   for (var i = 0; i < n; i++) {  ///////////// 11
+     if( NW[j][i]>0 ){ //console.log(AA[i] );console.log(NW[j][i] );
+        oi[cc]=i;cc=cc+1;
+       }
+      
+   }
+     //oo.push(oNW[j]);
+     //console.log(oo);
+     //oNW[j].sort(function(a, b){return a - b});
+     //console.log(NWO[0][0]);
+     //oNW[j].sort(function(a, b){return a - b});
+     var ooo =NW[j].slice().sort(function(a, b){return a - b});/////<-------
+     //console.log(ooo);
+     //console.log(NW[0][0]);
+
+     //console.log(oNW[0]);
+     var cri=100,cv=1; var iii=0;
+     for(var ii=0; ii<cc; ii++)
+    {      
+      //console.log(oNW[j].indexOf(NW[j][n+ii-cc]));
+      //console.log(NW[j].indexOf(ooo[n+ii-cc]));
+       iii=NW[j].indexOf(ooo[n+ii-cc]);
+      //console.log(iii);
+      //console.log(cri);
+      if( iii == cri){
+        iii=NW[j].indexOf(ooo[n+ii-cc]);
+      
+       var tou = indexall(NW[j],ooo[n+ii-cc])
+
+       // console.log(AA[tou[cv]]);
+       // console.log((ooo[n+ii-cc]));
+        AA[tou[cv]]
+       // console.log(cv);
+          ctl.imageSmoothingQuality = 'high';
+				ctl.clearRect(0, 0, wl, hl);
+				ctl.font = 'bold ' + lo + 'px Arial';
+				
+				var cl = 'orange';
+				if(AA[tou[cv]]=='G'){cl='#fcaf07';}
+				if(AA[tou[cv]]=='T'){cl='#d50000';}
+				if(AA[tou[cv]]=='P'){cl='#07d607';}
+				if(AA[tou[cv]]=='D'){cl='#FFF90F';}
+                                if(AA[tou[cv]]=='N'){cl='#00ffFF';}
+				if(AA[tou[cv]]=='L'){cl='#FF00FF';}
+                                if(AA[tou[cv]]=='E'){cl='#0000FF';}
+				ctl.fillStyle = cl;
+
+
+                              var colorc = document.getElementById("stc").value;
+                                colorc= colorc.toUpperCase();
+                                const b1111 = document.getElementById('r1');
+var kkkk =b1111.value;
+var ks = Number(kkkk);
+//console.log(ks.toString(16));
+var rrr = ks.toString(16);
+ if(ks<10){ rrr ='0'+rrr; }
+const b1112 = document.getElementById('g1');
+ kkkk =b1112.value;
+ ks = Number(kkkk);
+//console.log(ks.toString(16));
+var ggg = ks.toString(16);
+ if(ks<10){ ggg ='0'+ggg; }
+const b1113 = document.getElementById('b1');
+ kkkk =b1113.value;
+ ks = Number(kkkk);
+//console.log(ks.toString(16));
+var bbb = ks.toString(16);
+ if(ks<10){ bbb ='0'+bbb; }
+                                  
+                                //console.log('#'+rrr+ggg+bbb);
+                                if(AA[iii]== colorc){cl='#'+rrr+ggg+bbb;}
+                                ctl.fillStyle = cl;
+
+
+
+
+
+
+
+
+
+                             //   console.log(AA[tou[cv]]);//P
+				// console.log(n+ii-cc-1);  //6
+				var ltr = ctl.measureText(AA[tou[cv]]).width;
+				ctl.fillText(AA[tou[cv]], (wl/2)-(ltr/2), hl-5);
+				var y = h-(h/max)*ooo[n+ii-cc];
+				if(ii>0){var ih = h-((h/max)*ooo[n+ii-cc-1])-y;}
+				if(ii==0){var ih = h-y;}
+                                var ih = h-y;
+				ctx.imageSmoothingQuality = 'high';
+				ctx.drawImage(canvasl, x, y-(cv)*ih, iw, ih); 
+                             //  console.log(x); 
+                             //  console.log(y);
+                             //  console.log(iw);
+                             //  console.log(ih);
+        cv=cv+1;
+        var pih=ih;
+       }
+      else
+      {
+        iii=NW[j].indexOf(ooo[n+ii-cc]); 
+      
+      // console.log(AA[iii]);
+      // console.log((ooo[n+ii-cc]));
+      // console.log(cv);
+         ctl.imageSmoothingQuality = 'high';
+				ctl.clearRect(0, 0, wl, hl);
+				ctl.font = 'bold ' + lo + 'px Arial';
+				
+				var cl = 'royalblue';
+				if(AA[iii]=='G'){cl='#fcaf07';}
+				if(AA[iii]=='T'){cl='#d50000';}
+				if(AA[iii]=='A'){cl='#07d607';}
+				if(AA[iii]=='E'){cl='#0000ff';}
+                                if(AA[iii]=='L'){cl='#FF00FF';}
+				if(AA[iii]=='D'){cl='#FFF90F';}
+                                
+				ctl.fillStyle = cl;
+
+                               var colorc = document.getElementById("stc").value;
+                                colorc= colorc.toUpperCase();
+                                const b1111 = document.getElementById('r1');
+var kkkk =b1111.value;
+var ks = Number(kkkk);
+//console.log(ks.toString(16));
+var rrr = ks.toString(16);
+ if(ks<10){ rrr ='0'+rrr; }
+const b1112 = document.getElementById('g1');
+ kkkk =b1112.value;
+ ks = Number(kkkk);
+//console.log(ks.toString(16));
+var ggg = ks.toString(16);
+ if(ks<10){ ggg ='0'+ggg; }
+const b1113 = document.getElementById('b1');
+ kkkk =b1113.value;
+ ks = Number(kkkk);
+//console.log(ks.toString(16));
+var bbb = ks.toString(16);
+ if(ks<10){ bbb ='0'+bbb; }
+                                  
+                                //console.log('#'+rrr+ggg+bbb);
+                                if(AA[iii]== colorc){cl='#'+rrr+ggg+bbb;}
+                                ctl.fillStyle = cl;
+
+
+
+
+
+
+
+
+				
+				var ltr = ctl.measureText(AA[iii]).width;
+				ctl.fillText(AA[iii], (wl/2)-(ltr/2), hl-5);
+				var y = h-(h/max)*ooo[n+ii-cc];
+				if(ii>0){var ih = h-((h/max)*ooo[n+ii-cc-1])-y;}
+				if(ii==0){var ih = h-y;}
+                                //var ih = h-y;
+				ctx.imageSmoothingQuality = 'high';
+                                
+                           if(cv>1) //ctx.drawImage(canvasl, x, y-(cv-1)*pih-0.5*ih, iw, ih*1.4);
+		                {ctx.drawImage(canvasl, x, y-(cv-1)*pih, iw, ih);}
+                                else
+                                { ctx.drawImage(canvasl, x, y, iw, ih); 
+                                 }
+
+                              // console.log(x); 
+                              // console.log(y);
+                              // console.log(iw);
+                              // console.log(ih);
+
+
+       }
+      cri=iii;
+
+       
+     
+                             
+                               // console.log(x); 
+                               // console.log(y);
+                               // console.log(iw);
+                                //console.log(ih);
+if(t>=2){
+		
+			ctx.lineWidth = li;
+			ctx.closePath();
+			ctx.beginPath();
+			ctx.strokeStyle = '#454545';
+
+			for (var i=1; i<t; i++)
+			{
+				if(document.getElementById("show_bottom_divisions").checked) {
+					ctx.moveTo(80+Math.floor(iw*i), h+4);
+					ctx.lineTo(80+Math.floor(iw*i), h+20);
+				}
+				
+				ctx.font = bo + 'px Arial';
+				var txt = Number(i)+Number(sq);
+				var ltr = ctx.measureText(txt).width;
+				ctx.fillText(txt, (iw/2)-(ltr/2)+80+(i-1)*iw, h+40);
+			}
+			ctx.stroke();
+			ctx.moveTo(60, h+4);
+			if(document.getElementById("show_bottom").checked) {
+				//bottom line
+				ctx.lineTo(80+Math.floor(iw*(t-1)), h+4);
+			} else {
+				ctx.lineTo(75, h+4);
+			}
+			ctx.stroke();
+			
+			//left vertical line
+			ctx.moveTo((75), 4);
+			ctx.lineTo((75), h+40);
+			ctx.stroke();
+			//vertical divisions
+			for (var i=0; i<10; i++)
+			{
+				var fi = 65;
+				if(i==0){fi = 0}
+				ctx.moveTo(75, 4+(Math.floor((h+4)/10)*i));
+				ctx.lineTo(fi, 4+(Math.floor((h+4)/10)*i));
+			}
+			ctx.stroke();
+			
+			//MAX text
+                        //console.log( NW[0][0]/2);
+                        var hh=  NW[0][0]/2;
+			text = String(hh.toFixed(2));// 'Max';
+			dim = ctx.measureText(text).width
+			ctx.save();
+			ctx.translate(0,32);
+			ctx.font = "30px Arial";
+			ctx.fillStyle = "#0000ff";
+			ctx.textAlign = "left";
+			ctx.fillText(text, 0, 0);
+                         ctx.fillStyle = "#ff00ff";
+                        ctx.fillText('Bits', 0,110);
+			ctx.restore();
+			
+			text = '0';
+			dim = ctx.measureText(text).width
+			ctx.save();
+			ctx.translate(40,h+15);
+			ctx.font = "30px Arial";
+			ctx.fillStyle = "#00ff00";
+			ctx.textAlign = "left";
+			ctx.fillText(text, 0, 0);
+			ctx.restore();
+		}
+
+
+
+    }
+
+   }
+    console.log(oNW);
+    return [AA , ooo];
+   
+  }
+}
+
+function indexall(arr,ele){
+
+  var list =[];
+   for (var it=0; it< arr.length;it++)
+   { if(arr[it]==ele) { list.push(it);  }   }
+   return list;
+}
+
+
+
+
+
+
+</script>
+
+
